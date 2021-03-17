@@ -1,0 +1,17 @@
+type Friend {
+  _id: ID!
+  user: String!
+  friend: String!
+  lastMessage: String!
+}
+
+type Query {
+  friends: [FriendsOutput]
+}
+
+type FriendsOutput {
+  _id: ID
+  user: User
+  friend: User
+  lastMessage: String
+}

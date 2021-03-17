@@ -1,0 +1,73 @@
+.friends {
+  width: 21%;
+  height: auto;
+  overflow: hidden;
+  border-width: 0px 1px 0px 0px;
+  border-style: solid;
+  border-color: rgb(213, 217, 222);
+  background-color: rgb(240, 244, 248);
+
+  ::-webkit-scrollbar {
+    width: 14px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border: 3px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    border-radius: 6px;
+    -webkit-border-radius: 7px;
+    background-color: rgba(0, 0, 0, 0.15);
+    box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05),
+      inset 1px 1px 0px rgba(0, 0, 0, 0.05);
+    -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05),
+      inset 1px 1px 0px rgba(0, 0, 0, 0.05);
+  }
+
+  &:hover {
+    overflow: auto;
+  }
+}
+
+.friend {
+  &-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+
+    &:hover {
+      background-color: rgba(0, 198, 215, 0.1);
+    }
+
+    .avatar {
+      margin-right: 10px;
+    }
+  }
+
+  &-info {
+    min-width: 0;
+  }
+
+  &-name {
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 15px;
+    margin-bottom: 0px;
+    color: rgb(37, 36, 35);
+    font-weight: 400;
+    line-height: 19px;
+  }
+
+  &-last-message {
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 15px;
+    line-height: 22px;
+    color: rgb(138, 141, 145);
+    align-self: stretch;
+    background-color: rgba(0, 0, 0, 0);
+    font-weight: 400;
+  }
+}

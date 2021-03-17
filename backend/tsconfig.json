@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@configs": ["configs"],
+      "@environments": ["environments"],
+      "@models": ["models"],
+      "@resolvers": ["resolvers"],
+      "@typeDefs": ["typeDefs"],
+      "@utils": ["utils"],
+      "@validations": ["validations"]
+    }
+  },
+  "include": ["src/**/*.ts"]
+}

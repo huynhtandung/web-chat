@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "jsx": "react",
+    "checkJs": true,
+    "baseUrl": ".",
+    "paths": {
+      "@assets/*": ["./src/assets/*"],
+      "@common": ["./src/common/index"],
+      "@components/*": ["./src/components/*"],
+      "@configs": ["./src/configs/index"],
+      "@environments": ["./src/environments/index"],
+      "@pages/*": ["./src/pages/*"],
+      "@utils": ["./src/utils/index"]
+    }
+  },
+  "include": ["src"]
+}

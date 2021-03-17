@@ -1,0 +1,34 @@
+type User {
+  _id: ID!
+  username: String!
+  password: String!
+  fullName: String!
+}
+
+type Query {
+  me: MeOutput
+}
+
+type Mutation {
+  register(input: UserRegisterInput!): User
+  login(input: UserLoginInput!): UserLoginOutput
+}
+
+input UserRegisterInput {
+  username: String!
+  password: String!
+  fullName: String!
+}
+
+input UserLoginInput {
+  username: String!
+  password: String!
+}
+
+type UserLoginOutput {
+  accessToken: String!
+}
+
+type MeOutput {
+  currentUser: User
+}
