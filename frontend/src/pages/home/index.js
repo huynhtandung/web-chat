@@ -10,16 +10,27 @@ const Home = (props) => {
   const { currentUser } = props;
 
   const [friend, setFriend] = useState({});
+  const [newMessage, setNewMessage] = useState({});
 
   const handleChatWithFriend = (friend) => {
     setFriend(friend);
   };
 
+  const handleChangeLastMessage = (message) => {
+    setNewMessage(message);
+  };
+
   return (
     <AppContext.Provider value={currentUser}>
       <div className="home">
-        <Friends onChatWithFriend={handleChatWithFriend} />
-        <ChatBox friend={friend} currentUser={currentUser} />
+        <Friends
+          newMessage={newMessage}
+          onChatWithFriend={handleChatWithFriend}
+        />
+        <ChatBox
+          friend={friend}
+          onChangeLastMessage={handleChangeLastMessage}
+        />
       </div>
     </AppContext.Provider>
   );

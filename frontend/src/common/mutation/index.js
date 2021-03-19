@@ -15,3 +15,13 @@ export const LOGIN = gql`
     }
   }
 `;
+
+export const SEND_MESSAGE = gql`
+  mutation($input: SendMessageInput!) {
+    sendMessage(input: $input) {
+      sender
+      receiver
+      message
+    }
+  }
+`;

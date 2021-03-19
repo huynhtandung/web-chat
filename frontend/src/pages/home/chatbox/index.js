@@ -1,11 +1,19 @@
-import { MESSAGES } from "@common";
+import { useSubscription } from "@apollo/react-hooks";
+import { MESSAGES, MESSAGE_SENT } from "@common";
 import { Client } from "@configs";
 import React, { useEffect, useState } from "react";
-import MessageBox from "./messageBox";
+import InputChat from "./inputChat";
+import MessageBox from "./message";
 import "./style.less";
 
-const ChatBox = ({ friend, currentUser }) => {
+const ChatBox = ({ friend, onChangeLastMessage }) => {
   const [messages, setMessages] = useState([]);
+
+  const { data } = useSubscription(MESSAGE_SENT);
+
+  const onSendNewMessage = (message) => {
+    setMessages([...messages, message]);
+  };
 
   useEffect(() => {
     if (!friend._id) {
@@ -19,7 +27,7 @@ const ChatBox = ({ friend, currentUser }) => {
           receiver: friend._id,
         },
       },
-      // fetchPolicy: "network-only",
+      fetchPolicy: "network-only",
     }).then(({ data }) => {
       if (data) {
         setMessages(data.messages);
@@ -27,9 +35,27 @@ const ChatBox = ({ friend, currentUser }) => {
     });
   }, [friend]);
 
+  useEffect(() => {
+    if (data && data.messageSent) {
+      setMessages([...messages, data.messageSent]);
+      onChangeLastMessage(data.messageSent);
+    }
+  }, [data]);
+
   return (
     <div className="chatbox">
-      <MessageBox messages={messages} />
+      {Object.keys(friend).length ? (
+        <>
+          <MessageBox messages={messages} />
+          <InputChat
+            friend={friend}
+            onSendNewMessage={onSendNewMessage}
+            onChangeLastMessage={onChangeLastMessage}
+          />
+        </>
+      ) : (
+        <div>Start to chat!</div>
+      )}
     </div>
   );
 };

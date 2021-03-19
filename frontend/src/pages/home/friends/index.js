@@ -5,8 +5,21 @@ import React from "react";
 import FriendItem from "./friendItem";
 import "./style.less";
 
-const Friends = ({ onChatWithFriend }) => {
+const Friends = ({ onChatWithFriend, newMessage }) => {
   const { data } = useQuery(FRIENDS);
+
+  const handleLastMessage = (friend, message) => {
+    if (Object.keys(newMessage).length) {
+      if (
+        friend._id === newMessage.sender ||
+        friend._id === newMessage.receiver
+      ) {
+        return newMessage.message;
+      }
+    }
+
+    return message;
+  };
 
   return (
     <div className="friends">
@@ -16,7 +29,7 @@ const Friends = ({ onChatWithFriend }) => {
             <FriendItem
               key={idx}
               friend={item.friend}
-              lastMessage={item.lastMessage}
+              lastMessage={handleLastMessage(item.friend, item.lastMessage)}
               onChatWithFriend={onChatWithFriend}
             />
           );

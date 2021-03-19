@@ -1,0 +1,38 @@
+.message-box {
+  width: 100%;
+  padding: 0 12.5%;
+  flex-grow: 1;
+  overflow: auto;
+
+  .message-item {
+    &-receiver {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 3px;
+
+      div {
+        width: fit-content;
+        max-width: 80%;
+        background-color: rgb(242, 246, 249);
+        padding: 8px 10px;
+        border-radius: 10px;
+      }
+    }
+
+    &-sender {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 3px;
+
+      div {
+        width: fit-content;
+        max-width: 80%;
+        background-color: rgb(219, 244, 253);
+        padding: 8px 10px;
+        border-radius: 10px;
+      }
+    }
+  }
+}

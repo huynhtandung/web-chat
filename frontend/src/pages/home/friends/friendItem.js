@@ -2,7 +2,7 @@ import AvatarCustom from "@components/avatar";
 import React from "react";
 
 const FriendItem = ({ friend, lastMessage, onChatWithFriend }) => {
-  const { _id, fullName } = friend;
+  const { fullName } = friend;
 
   return (
     <div className="friend-item" onClick={() => onChatWithFriend(friend)}>

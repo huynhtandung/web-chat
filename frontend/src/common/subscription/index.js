@@ -1,7 +1,11 @@
 import gql from "graphql-tag";
 
-export const TEST = gql`
+export const MESSAGE_SENT = gql`
   subscription {
-    test
+    messageSent {
+      sender
+      receiver
+      message
+    }
   }
 `;
