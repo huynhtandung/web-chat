@@ -1,11 +1,35 @@
 import { User } from "@models";
 import { comparePassword, generateToken, hashPassword } from "@utils";
-import { UserLoginValidation, UserRegisterValidation } from "@validations";
+import {
+  SearchUserValidation,
+  UserLoginValidation,
+  UserRegisterValidation,
+} from "@validations";
 import { ApolloError } from "apollo-server-errors";
 
 export const UserResolver = {
   Query: {
     me: (_, __, { currentUser }) => ({ currentUser }),
+    searchUser: async (_, { input }) => {
+      await SearchUserValidation.validate(input);
+      const { keyword } = input;
+      return await User.find({
+        $or: [
+          {
+            username: {
+              $regex: keyword,
+              $options: "i",
+            },
+          },
+          {
+            fullName: {
+              $regex: keyword,
+              $options: "i",
+            },
+          },
+        ],
+      });
+    },
   },
   Mutation: {
     register: async (_, { input }) => {

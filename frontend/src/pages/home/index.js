@@ -25,6 +25,7 @@ const Home = (props) => {
       <div className="home">
         <Friends
           newMessage={newMessage}
+          onAddNewFriend={Object.keys(newMessage).length > 0 ? friend : {}}
           onChatWithFriend={handleChatWithFriend}
         />
         <ChatBox

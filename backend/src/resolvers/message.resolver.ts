@@ -25,7 +25,7 @@ export const MessageResolver = {
   Mutation: {
     sendMessage: async (_, { input }, { currentUser }) => {
       await SendMessageValidation.validate(input);
-      const { receiver, message } = input;
+      const { receiver, message, sendAt } = input;
       const existedUser = await User.findOne({ _id: receiver });
       if (!existedUser) {
         throw new ApolloError("Receiver not found!");
@@ -91,6 +91,7 @@ export const MessageResolver = {
         sender: currentUser._id,
         receiver,
         message,
+        sendAt,
       });
 
       await newMessage.save();

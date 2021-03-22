@@ -15,6 +15,8 @@ const fullName = yup
   .required("Fullname is required!")
   .min(6, "Min length is 6!");
 
+const keyword = yup.string().required("Keyword is required!");
+
 export const UserRegisterValidation = yup.object().shape({
   username,
   password,
@@ -25,3 +27,5 @@ export const UserLoginValidation = yup.object().shape({
   username,
   password,
 });
+
+export const SearchUserValidation = yup.object().shape({ keyword });

@@ -5,6 +5,7 @@ import { SendOutlined } from "@ant-design/icons";
 import "./style.less";
 import { useMutation } from "@apollo/react-hooks";
 import { SEND_MESSAGE } from "@common";
+import * as moment from "moment";
 
 const InputChat = ({ friend, onSendNewMessage, onChangeLastMessage }) => {
   const inputRef = useRef();
@@ -29,6 +30,7 @@ const InputChat = ({ friend, onSendNewMessage, onChangeLastMessage }) => {
         input: {
           receiver: friend._id,
           message: value,
+          sendAt: moment().valueOf(),
         },
       },
     }).then(({ data }) => {

@@ -2,6 +2,7 @@ import { useSubscription } from "@apollo/react-hooks";
 import { MESSAGES, MESSAGE_SENT } from "@common";
 import { Client } from "@configs";
 import React, { useEffect, useState } from "react";
+import ChatHeader from "./chatHeader";
 import InputChat from "./inputChat";
 import MessageBox from "./message";
 import "./style.less";
@@ -46,7 +47,8 @@ const ChatBox = ({ friend, onChangeLastMessage }) => {
     <div className="chatbox">
       {Object.keys(friend).length ? (
         <>
-          <MessageBox messages={messages} />
+          <ChatHeader friend={friend} />
+          <MessageBox friend={friend} messages={messages} />
           <InputChat
             friend={friend}
             onSendNewMessage={onSendNewMessage}

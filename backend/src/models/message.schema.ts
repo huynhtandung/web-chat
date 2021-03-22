@@ -19,6 +19,10 @@ const MessageSchema = new Schema({
     type: String,
     require: true,
   },
+  sendAt: {
+    type: Number,
+    require: true,
+  },
 });
 
 export interface MessageInterface extends Document {
@@ -26,6 +30,7 @@ export interface MessageInterface extends Document {
   sender: string;
   receiver: string;
   message: string;
+  sendAt: number;
 }
 
 export const Message = model<MessageInterface>("messages", MessageSchema);

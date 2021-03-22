@@ -1,15 +1,24 @@
-.friends {
+.menu {
   width: 21%;
   min-width: 21%;
-  height: auto;
-  overflow: hidden;
   border-width: 0px 1px 0px 0px;
   border-style: solid;
   border-color: rgb(213, 217, 222);
   background-color: rgb(240, 244, 248);
+  padding: 0 10px;
+}
+
+.friends-list {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
 
   &:hover {
     overflow: auto;
+  }
+
+  .ant-divider {
+    margin: 0;
   }
 }
 
@@ -18,7 +27,7 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-    padding: 10px;
+    padding: 10px 0;
 
     &:hover {
       background-color: rgba(0, 198, 215, 0.1);

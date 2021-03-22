@@ -34,6 +34,17 @@ export const MESSAGES = gql`
       sender
       receiver
       message
+      sendAt
+    }
+  }
+`;
+
+export const SEARCH_USER = gql`
+  query($input: SearchUserInput!) {
+    searchUser(input: $input) {
+      _id
+      username
+      fullName
     }
   }
 `;

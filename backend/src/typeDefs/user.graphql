@@ -7,6 +7,7 @@ type User {
 
 type Query {
   me: MeOutput
+  searchUser(input: SearchUserInput!): [User]
 }
 
 type Mutation {
@@ -31,4 +32,8 @@ type UserLoginOutput {
 
 type MeOutput {
   currentUser: User
+}
+
+input SearchUserInput {
+  keyword: String!
 }

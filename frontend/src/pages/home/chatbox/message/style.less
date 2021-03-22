@@ -1,37 +1,70 @@
 .message-box {
   width: 100%;
-  padding: 0 12.5%;
+  padding: 0 12% 0 8%;
   flex-grow: 1;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
 
-  .message-item {
-    &-receiver {
-      width: 100%;
-      display: flex;
-      justify-content: flex-start;
-      margin-bottom: 3px;
+  .group-message {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
 
-      div {
-        width: fit-content;
-        max-width: 80%;
-        background-color: rgb(242, 246, 249);
-        padding: 8px 10px;
-        border-radius: 10px;
-      }
+    &:nth-child(1) {
+      margin-top: auto;
     }
 
+    &-content {
+      width: 100%;
+      padding-left: 12px;
+
+      span {
+        background-color: rgba(0, 0, 0, 0);
+        font-size: 12px;
+        color: rgb(138, 141, 145);
+        font-weight: 400;
+        user-select: text;
+        display: block;
+        margin-bottom: 3px;
+      }
+    }
+  }
+
+  .message {
     &-sender {
       width: 100%;
       display: flex;
-      justify-content: flex-end;
-      margin-bottom: 3px;
+      flex-direction: column;
+      align-items: flex-end;
 
-      div {
-        width: fit-content;
+      & > * {
+        width: 80%;
         max-width: 80%;
+        width: fit-content;
+      }
+
+      &-item {
         background-color: rgb(219, 244, 253);
         padding: 8px 10px;
         border-radius: 10px;
+        margin-bottom: 3px;
+      }
+    }
+
+    &-receiver {
+      & > * {
+        width: 80%;
+        max-width: 80%;
+        width: fit-content;
+      }
+
+      &-item {
+        background-color: rgb(242, 246, 249);
+        padding: 8px 10px;
+        border-radius: 10px;
+        margin-bottom: 3px;
       }
     }
   }

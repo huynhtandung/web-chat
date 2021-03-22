@@ -22,6 +22,7 @@ export const SEND_MESSAGE = gql`
       sender
       receiver
       message
+      sendAt
     }
   }
 `;

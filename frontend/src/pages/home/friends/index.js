@@ -2,38 +2,21 @@
 import { useQuery } from "@apollo/react-hooks";
 import { FRIENDS } from "@common";
 import React from "react";
-import FriendItem from "./friendItem";
+import FriendList from "./FriendList";
+import SearchUser from "./searchUser";
 import "./style.less";
+import UserHeader from "./userHeader";
 
-const Friends = ({ onChatWithFriend, newMessage }) => {
-  const { data } = useQuery(FRIENDS);
-
-  const handleLastMessage = (friend, message) => {
-    if (Object.keys(newMessage).length) {
-      if (
-        friend._id === newMessage.sender ||
-        friend._id === newMessage.receiver
-      ) {
-        return newMessage.message;
-      }
-    }
-
-    return message;
-  };
-
+const Friends = ({ onChatWithFriend, newMessage, onAddNewFriend }) => {
   return (
-    <div className="friends">
-      {data &&
-        data.friends.map((item, idx) => {
-          return (
-            <FriendItem
-              key={idx}
-              friend={item.friend}
-              lastMessage={handleLastMessage(item.friend, item.lastMessage)}
-              onChatWithFriend={onChatWithFriend}
-            />
-          );
-        })}
+    <div className="menu">
+      <UserHeader />
+      <SearchUser onChatWithFriend={onChatWithFriend} />
+      <FriendList
+        newMessage={newMessage}
+        onChatWithFriend={onChatWithFriend}
+        onAddNewFriend={onAddNewFriend}
+      />
     </div>
   );
 };

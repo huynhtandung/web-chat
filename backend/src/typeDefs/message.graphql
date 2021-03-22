@@ -3,6 +3,7 @@ type Message {
   sender: String!
   receiver: String!
   message: String!
+  sendAt: Float!
 }
 
 type Query {
@@ -20,6 +21,7 @@ type Subscription {
 input SendMessageInput {
   receiver: String!
   message: String!
+  sendAt: Float!
 }
 
 input MessagesInput {
